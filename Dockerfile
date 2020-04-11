@@ -4,6 +4,8 @@ FROM alpine:3.10
 # Copies your code file from your action repository to the filesystem path `/` of the container
 COPY entrypoint.sh /entrypoint.sh
 
+RUN chmod +x /entrypoint.sh
+
 RUN apk update && apk add --no-cache docker-cli
 
 RUN wget https://github.com/buildpack/pack/releases/download/v0.9.0/pack-v0.9.0-linux.tgz \
