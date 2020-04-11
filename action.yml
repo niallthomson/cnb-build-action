@@ -17,7 +17,11 @@ inputs:
   publish:
     description: 'Publish to registry'
     required: false
-    default: ''
+    default: 'false'
+  snapshot:
+    description: 'Tag the image with {YEAR}{MONTH}{DAY}{HOUR}{MINUTE}{SECOND}{first 6 digits of the git sha}'
+    required: false
+    default: 'false'
 outputs:
   imageName:
     description: 'Name of the image that was created'

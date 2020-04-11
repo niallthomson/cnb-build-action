@@ -2,17 +2,20 @@
 
 set -e
 
-path=$1
-imageName=$2
-builder=$3
-publish=$4
-
 args=""
 
-if [ -n "${publish}" ]; then
+if [ "${INPUT_PUBLISH}" == "true" ]; then
   args="$args --publish"
 fi
 
-pack build $imageName -p /github/workspace/$path --builder $builder $args
+if [ "${INPUT_SNAPSHOT}" == "true" ]; then
+  timestamp=`date +%Y%m%d%H%M%S`
+  shortSha=$(echo "${GITHUB_SHA}" | cut -c1-6)
+  sha_tag="${timestamp}${shortSha}"
 
-echo "::set-output name=imageName::$imageName"
+  INPUT_IMAGENAME="$INPUT_IMAGENAME:$sha_tag"
+fi
+
+pack build $INPUT_IMAGENAME -p /github/workspace/$INPUT_PATH --builder $INPUT_BUILDER $args
+
+echo "::set-output name=imageName::$INPUT_IMAGENAME"
