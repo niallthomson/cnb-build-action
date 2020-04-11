@@ -14,3 +14,5 @@ if [ -n "${publish}" ]; then
 fi
 
 pack build $imageName -p /github/workspace/$path --builder $builder $args
+
+echo "::set-output name=imageName::$imageName"

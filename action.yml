@@ -19,7 +19,7 @@ inputs:
     required: false
     default: ''
 outputs:
-  image:
+  imageName:
     description: 'Name of the image that was created'
 branding:
   icon: 'truck'
