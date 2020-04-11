@@ -7,6 +7,10 @@ imageName=$2
 builder=$3
 publish=$4
 
-echo "Executing... $@"
+args=""
 
-pack build $imageName -p /github/workspace/$path --builder $builder
+if [ -n "${publish}" ]; then
+  args="$args --publish"
+fi
+
+pack build $imageName -p /github/workspace/$path --builder $builder $args
