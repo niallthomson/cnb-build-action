@@ -1,0 +1,34 @@
+name: 'Cloud Native Buildpack Build Action'
+description: 'Translates your source code into a container image using buildpacks'
+author: Niall Thomson
+inputs:
+  path:
+    description: 'Path to app dir or zip-formatted file'
+    required: false
+    default: ''
+  imageName:
+    description: 'Name of the image that will be built'
+    required: true
+    default: "none"
+  builder:
+    description: 'Builder image'
+    required: false
+    default: 'cloudfoundry/cnb:bionic'
+  publish:
+    description: 'Publish to registry'
+    required: false
+    default: ''
+outputs:
+  image:
+    description: 'Name of the image that was created'
+branding:
+  icon: 'truck'
+  color: 'yellow'
+runs:
+  using: 'docker'
+  image: 'Dockerfile'
+  args:
+    - ${{ inputs.path }}
+    - ${{ inputs.imageName }}
+    - ${{ inputs.builder }}
+    - ${{ inputs.publish }}
