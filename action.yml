@@ -22,6 +22,18 @@ inputs:
     description: 'Tag the image with {YEAR}{MONTH}{DAY}{HOUR}{MINUTE}{SECOND}{first 6 digits of the git sha}'
     required: false
     default: 'false'
+  registry:
+    description: 'Registry for logging in to push'
+    required: false
+    default: ''
+  registryUsername:
+    description: 'Username for logging in to registry to push'
+    required: false
+    default: ''
+  registryPassword:
+    description: 'Password for logging in to registry to push'
+    required: false
+    default: ''
 outputs:
   imageName:
     description: 'Name of the image that was created'
@@ -31,8 +43,3 @@ branding:
 runs:
   using: 'docker'
   image: 'Dockerfile'
-  args:
-    - ${{ inputs.path }}
-    - ${{ inputs.imageName }}
-    - ${{ inputs.builder }}
-    - ${{ inputs.publish }}
