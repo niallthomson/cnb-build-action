@@ -1,4 +1,4 @@
-FROM docker
+FROM docker:19.03.2
 
 RUN mkdir /pack
 RUN mkdir /source
@@ -11,5 +11,4 @@ RUN wget https://github.com/buildpack/pack/releases/download/v0.9.0/pack-v0.9.0-
       && tar -xvf pack-v0.9.0-linux.tgz \
       && chmod +x /entrypoint.sh
 
-ENTRYPOINT /entrypoint.sh
-CMD []
+ENTRYPOINT ["/entrypoint.sh"]
