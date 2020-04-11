@@ -12,3 +12,4 @@ RUN wget https://github.com/buildpack/pack/releases/download/v0.9.0/pack-v0.9.0-
       && chmod +x /entrypoint.sh
 
 ENTRYPOINT ["/entrypoint.sh"]
+CMD []
