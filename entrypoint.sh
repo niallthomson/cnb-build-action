@@ -9,4 +9,4 @@ publish=$4
 
 echo "Executing... $@"
 
-/pack/pack build $imageName -p /github/workspace/$path --builder $builder
+pack build $imageName -p /github/workspace/$path --builder $builder
