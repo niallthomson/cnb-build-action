@@ -1,5 +1,7 @@
 # Cloud Native Buildpacks Build Action
 
+> ARCHIVED: Use this instead https://github.com/dfreilich/pack-action
+
 This action uses the `pack` utility to convert source code to a container image via [Cloud Native Buildpacks](https://buildpacks.io).
 
 ## Example
